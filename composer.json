@@ -1,0 +1,27 @@
+{
+    "name": "hakimasrori/repository",
+    "description": "Percobaan",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hakimasrori\\Repository\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "hakim-asrori",
+            "email": "saneglos005@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hakimasrori\\Repository\\RepositoryServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "spatie/laravel-package-tools": "^1.13"
+    }
+}
