@@ -18,7 +18,6 @@
         "laravel": {
             "providers": [
                 "Hakimasrori\\Repository\\LaravelRepositoryServiceProvider",
-                "Hakimasrori\\Repository\\RepositoryServiceProvider"
             ]
         }
     },
