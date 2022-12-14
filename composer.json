@@ -17,8 +17,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Hakimasrori\\Repository\\Contracts\\LaravelRepositoryServiceProvider",
-                "Hakimasrori\\Repository\\Contracts\\RepositoryServiceProvider"
+                "Hakimasrori\\Repository\\Providers\\LaravelRepositoryServiceProvider",
+                "Hakimasrori\\Repository\\Providers\\RepositoryServiceProvider"
             ]
         }
     },
