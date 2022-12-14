@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;
 
-trait CreateFile
+class CreateFile
 {
   /**
    * The path to create file at
