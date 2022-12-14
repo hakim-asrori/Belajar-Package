@@ -23,7 +23,7 @@ class LaravelRepositoryServiceProvider extends PackageServiceProvider
     }
 
     foreach ($this->package->configFileNames as $configFileName) {
-      $this->mergeConfigFrom(__DIR__ . '/../../config/' . $configFileName . '.php', $configFileName);
+      $this->mergeConfigFrom($this->package->basePath("/../../config/{$configFileName}"), $configFileName);
     }
 
     $this->mergeConfigFrom(__DIR__ . '/../../config/repository-name.php', 'repository-name');
