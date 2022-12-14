@@ -1,0 +1,8 @@
+<?php
+
+namespace App\Http\Repositories\Contracts;
+
+interface {contractName}
+{
+	// Write something awesome :)
+}
