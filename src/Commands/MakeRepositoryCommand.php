@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\File;
 
 class MakeRepositoryCommand extends Command
 {
-  use NamespaceFixer;
+  use NamespaceFixer, CreateFile;
 
   /**
    * The name and signature of the console command.
