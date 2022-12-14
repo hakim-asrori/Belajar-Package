@@ -9,7 +9,7 @@ trait NamespaceFixer
 {
   protected function getBaseDirectory($factoryName)
   {
-    return File::dirname($this->basePath . '\\' . $factoryName);
+    return File::dirname(config('repository.repository_namespace') . '\\' . $factoryName);
   }
 
   protected function getBaseFileName($factoryName)
