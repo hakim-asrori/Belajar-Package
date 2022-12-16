@@ -35,7 +35,7 @@ class RepositoryServiceProvider extends ServiceProvider
     protected function bindAllRepositories()
     {
         $repositoryContracts = $this->getRepositoryPath();
-
+        dd($repositoryContracts);
         foreach ($repositoryContracts as $key => $repositoryContract) {
             $repositoryContractClass = config('repository.contract_namespace') . '\\'
                 . $repositoryContract . '\\'
