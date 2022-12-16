@@ -1,6 +1,6 @@
 # Repository Pattern untuk Laravel
 
-Repository pattern adalah sebuah pola desain software yang menyediakan lapisan abstraksi antara akses data dan logika bisnis dari sebuah aplikasi.
+Repository pattern adalah sebuah pola desain software yang menyediakan lapisan abstraksi antara akses data dan logika bisnis dari sebuah aplikasi. dengan adanya Repository pattern, antara logika bisnis aplikasi dengan pengolahan data ke database itu terpisah pengerjaannya. Sehingga masing-masing punya tempat untuk pemrosesannya. 
 
 ## Persyaratan
 
