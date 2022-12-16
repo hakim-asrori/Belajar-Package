@@ -3,7 +3,7 @@
 namespace App\Http\Repositories;
 
 use App\Http\Repositories\Contract\{contractName};
-use App\Http\Repositories\Repository;
+use Hakimasrori\Repository\Repository;
 use App\Models\{model};
 
 class {repositoryName} extends Repository implements {contractName}

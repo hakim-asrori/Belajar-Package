@@ -93,7 +93,7 @@ class MakeRepositoryCommand extends Command
         $titleRepository = $this->title($name) . config("repository-name.repository_suffix");
         $baseName = $this->getBaseFileName($name) . config("repository-name.repository_suffix");
 
-        $repoPath = config('repository.repository_directory') . $titleRepository;
+        $repoPath = config('repository.repository_directory') . '/' . $titleRepository;
         $filePath = $repoPath . ".php";
 
         $repositoryNamespacePath = $filePath;
