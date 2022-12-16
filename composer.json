@@ -19,7 +19,10 @@
             "providers": [
                 "Hakimasrori\\Repository\\LaravelRepositoryServiceProvider",
                 "Hakimasrori\\Repository\\RepositoryServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "LaravelRepository": "Hakimasrori\\Repository\\LaravelRepositoryFacade"
+            }
         }
     },
     "require": {
