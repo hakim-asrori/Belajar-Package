@@ -34,9 +34,10 @@ class RepositoryServiceProvider extends ServiceProvider
 
     protected function bindAllRepositories()
     {
-        $repositoryContracts = $this->getRepositoryPath();
-        dd($repositoryContracts);
-        foreach ($repositoryContracts as $key => $repositoryContract) {
+        $repositoryContracts = $this->getContractPath();
+        // $repositoryImplements = $this->getRepositoryPath();
+
+        foreach ($repositoryContracts as $repositoryContract) {
             $repositoryContractClass = config('repository.contract_namespace') . '\\'
                 . $repositoryContract . '\\'
                 . $repositoryContract
@@ -49,6 +50,36 @@ class RepositoryServiceProvider extends ServiceProvider
 
             $this->app->bind($repositoryContractClass, $repositoryImplementClass);
         }
+
+        // foreach ($repositoryContracts as $key => $repositoryContract) {
+        //     $repositoryContractClass = config('repository.contract_namespace') . '\\'
+        //         . $repositoryContract . '\\'
+        //         . $repositoryContract
+        //         . config('repository-name.repository_interface_suffix');
+
+        //     $repositoryImplementClass = config('repository.repository_namespace') . '\\'
+        //         . $repositoryContract . '\\'
+        //         . $repositoryContract
+        //         . config('repository-name.repository_suffix');
+
+        //     $this->app->bind($repositoryContractClass, $repositoryImplementClass);
+        // }
+    }
+
+    protected function getContractPath()
+    {
+        $folders = [];
+        if (file_exists($this->app->basePath() . '/' . config('repository.contract_directory'))) {
+            $dirs = File::directories($this->app->basePath() . '/' . config('repository.contract_directory'));
+            foreach ($dirs as $dir) {
+                $dir = str_replace('\\', '/', $dir);
+                $arr = explode("/", $dir);
+
+                $folders[] = end($arr);
+            }
+        }
+
+        return $folders;
     }
 
     protected function getRepositoryPath()
