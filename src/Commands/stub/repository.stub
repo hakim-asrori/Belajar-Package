@@ -2,7 +2,7 @@
 
 namespace App\Http\Repositories;
 
-use App\Http\Repositories\Contract\{contractName};
+use App\Http\Repositories\Contracts\{contractName};
 use Hakimasrori\Repository\Repository;
 use App\Models\{model};
 
