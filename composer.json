@@ -1,6 +1,6 @@
 {
     "name": "hakimasrori/repository",
-    "description": "Percobaan",
+    "description": "Simple Repository, Design Pattern, Laravel, SOLID Principle",
     "type": "library",
     "license": "MIT",
     "autoload": {
