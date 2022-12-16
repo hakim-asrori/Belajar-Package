@@ -17,12 +17,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Hakimasrori\\Repository\\LaravelRepositoryServiceProvider",
-                "Hakimasrori\\Repository\\RepositoryServiceProvider"
-            ],
-            "aliases": {
-                "LaravelRepository": "Hakimasrori\\Repository\\LaravelRepositoryFacade"
-            }
+                "Hakimasrori\\Repository\\LaravelRepositoryServiceProvider"
+            ]
         }
     },
     "require": {
