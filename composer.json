@@ -5,7 +5,13 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Hakimasrori\\Repository\\": "src/"
+            "Hakimasrori\\Repository\\": "src/",
+            "Hakimasrori\\Repository\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Hakimasrori\\Repository\\Tests\\": "tests/"
         }
     },
     "authors": [
@@ -17,11 +23,21 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Hakimasrori\\Repository\\LaravelRepositoryServiceProvider"
-            ]
+                "Hakimasrori\\Repository\\LaravelRepositoryServiceProvider",
+                "Hakimasrori\\Repository\\RepositoryServiceProvider"
+            ],
+            "aliases": {
+                "LaravelRepository": "Hakimasrori\\Repository\\LaravelRepositoryFacade"
+            }
         }
     },
     "require": {
-        "spatie/laravel-package-tools": "^1.13"
+        "spatie/laravel-package-tools": "^1.13",
+        "orchestra/testbench": "^7.15"
+    },
+    "require-dev": {
+        "nunomaduro/collision": "^6.2",
+        "brianium/paratest": "^6.7",
+        "phpunit/phpunit": "^9.5"
     }
 }

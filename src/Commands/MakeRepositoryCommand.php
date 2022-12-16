@@ -47,7 +47,7 @@ class MakeRepositoryCommand extends Command
         $this->createRepository($repositoryName);
     }
 
-    protected function createContract($name)
+    public function createContract($name)
     {
         if (!File::exists($this->getBaseDirectory("Contracts\\" . $name))) {
             File::makeDirectory($this->getBaseDirectory("Contracts\\" . $name), 0777, true);
@@ -77,7 +77,7 @@ class MakeRepositoryCommand extends Command
         }
     }
 
-    protected function createRepository($name)
+    public function createRepository($name)
     {
         if (!File::exists($this->getBaseDirectory($name))) {
             File::makeDirectory($this->getBaseDirectory($name), 0775, true);
@@ -122,7 +122,7 @@ class MakeRepositoryCommand extends Command
         }
     }
 
-    protected function title($name)
+    public function title($name)
     {
         return Str::remove(' ', ucwords(Str::of($name)->replace('_', ' ')));
     }
