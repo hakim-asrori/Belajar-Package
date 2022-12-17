@@ -41,6 +41,7 @@ class MakeRepositoryCommand extends Command
 
         if (!$this->isConfigPublished()) {
             $this->error('Config has not been published yet..!');
+            return true;
         }
 
         $isContractCreated = $this->createContract($repositoryName);
