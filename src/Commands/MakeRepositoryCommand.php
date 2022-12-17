@@ -39,6 +39,10 @@ class MakeRepositoryCommand extends Command
             $this->error('Name Invalid..!');
         }
 
+        if (!$this->isConfigPublished()) {
+            $this->error('Config has not been published yet..!');
+        }
+
         $isContractCreated = $this->createContract($repositoryName);
         if (!$isContractCreated) {
             return;
@@ -125,5 +129,13 @@ class MakeRepositoryCommand extends Command
     public function title($name)
     {
         return Str::remove(' ', ucwords(Str::of($name)->replace('_', ' ')));
+    }
+
+    private function isConfigPublished()
+    {
+        $path = config_path("repository.php");
+        $exists = file_exists($path);
+
+        return $exists;
     }
 }
