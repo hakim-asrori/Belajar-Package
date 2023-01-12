@@ -54,19 +54,20 @@ class MakeRepositoryCommand extends Command
 
     public function createContract($name)
     {
-        if (!File::exists($this->getBaseDirectory("Contracts\\" . $name))) {
-            File::makeDirectory($this->getBaseDirectory("Contracts\\" . $name), 0777, true);
-        }
+        // if (!File::exists($this->getBaseDirectory("Contracts\\" . $name))) {
+        //     File::makeDirectory($this->getBaseDirectory("Contracts\\" . $name), 0777, true);
+        // }
 
         $title = $this->title($name) . config('repository-name.repository_interface_suffix');
         $baseName = $this->getBaseFileName($name) . config('repository-name.repository_interface_suffix');
 
-        $contractPath = config('repository.contract_directory') . '/' . $title;
+        $contractPath = config('repository.repository_directory') . "/$name/" . $title;
         $filePath = $contractPath . '.php';
         $contractNamespacePath = $filePath;
 
         $stubProperties = [
-            "{contractName}" => $baseName
+            "{contractName}" => $baseName,
+            "{nameSpace}" => config('repository.repository_namespace') . "\\$name",
         ];
 
         if (!File::exists($filePath)) {
@@ -91,14 +92,14 @@ class MakeRepositoryCommand extends Command
         $titleContract = $this->title($name) . config('repository-name.repository_interface_suffix');
         $contract = $this->getBaseFileName($name) . config('repository-name.repository_interface_suffix');
 
-        $contractPath = config('repository.contract_directory') . '/' . $titleContract;
+        $contractPath = config('repository.repository_directory') . "/$name/" . $titleContract;
         $contractNamespace = Str::ucfirst($this->getNameSpace($contractPath));
 
         $title = $this->getBaseFileName($name);
         $titleRepository = $this->title($name) . config("repository-name.repository_suffix");
         $baseName = $this->getBaseFileName($name) . config("repository-name.repository_suffix");
 
-        $repoPath = config('repository.repository_directory') . '/' . $titleRepository;
+        $repoPath = config('repository.repository_directory') . '/$name/' . $titleRepository;
         $filePath = $repoPath . ".php";
 
         $repositoryNamespacePath = $filePath;
@@ -106,8 +107,10 @@ class MakeRepositoryCommand extends Command
         $stubProperties = [
             "{contractName}" => $contract,
             "{repositoryName}" => $baseName,
+            "{nameSpace}" => config('repository.repository_namespace') . "\\$name",
             "{model}" => $title,
             "{modelVariable}" => Str::camel($title),
+            "{contractNamespace}" => $contractNamespace,
         ];
 
         if (!File::exists($filePath)) {
