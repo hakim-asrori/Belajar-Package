@@ -54,80 +54,79 @@ class MakeRepositoryCommand extends Command
 
     public function createContract($name)
     {
-        // if (!File::exists($this->getBaseDirectory("Contracts\\" . $name))) {
-        //     File::makeDirectory($this->getBaseDirectory("Contracts\\" . $name), 0777, true);
-        // }
-
-        $title = $this->title($name) . config('repository-name.repository_interface_suffix');
-        $baseName = $this->getBaseFileName($name) . config('repository-name.repository_interface_suffix');
-
-        $contractPath = config('repository.repository_directory') . "/$name/" . $title;
-        $filePath = $contractPath . '.php';
-        $contractNamespacePath = $filePath;
+        $repositoryContractNameSpace = config('repository.contract_namespace') . "\\" . $name;
+        $repositoryContractName = $this->title($name) . config('repository-name.repository_interface_suffix');
 
         $stubProperties = [
-            "{contractName}" => $baseName,
-            "{nameSpace}" => config('repository.repository_namespace') . "\\$name",
+            "{contractName}" => $repositoryContractName,
+            "{nameSpace}" => $repositoryContractNameSpace,
         ];
 
-        if (!File::exists($filePath)) {
+        $contractPath = config('repository.repository_directory') . "/$name/" . $repositoryContractName;
+        $contractFilePath = $contractPath . ".php";
+
+        if (!File::exists($contractFilePath)) {
             $fileContent = __DIR__ . "/stub/repository-contract.stub";
 
-            new CreateFile($stubProperties, $contractNamespacePath, $fileContent);
+            new CreateFile(
+                $stubProperties,
+                $contractFilePath,
+                $fileContent
+            );
 
             $this->info('Contract Created Successfully.');
             return true;
         } else {
-            $this->error('Repository Already Exists.');
+            $this->error('Contract Already Exists.');
             return false;
         }
     }
 
     public function createRepository($name)
     {
-        if (!File::exists($this->getBaseDirectory($name))) {
-            File::makeDirectory($this->getBaseDirectory($name), 0775, true);
-        }
+        // if (!File::exists($this->getBaseDirectory($name))) {
+        //     File::makeDirectory($this->getBaseDirectory($name), 0775, true);
+        // }
 
-        $titleContract = $this->title($name) . config('repository-name.repository_interface_suffix');
-        $contract = $this->getBaseFileName($name) . config('repository-name.repository_interface_suffix');
+        // $titleContract = $this->title($name) . config('repository-name.repository_interface_suffix');
+        // $contract = $this->getBaseFileName($name) . config('repository-name.repository_interface_suffix');
 
-        $contractPath = config('repository.repository_directory') . "/$name/" . $titleContract;
-        $contractNamespace = Str::ucfirst($this->getNameSpace($contractPath));
+        // $contractPath = config('repository.repository_directory') . "/$name/" . $titleContract;
+        // $contractNamespace = Str::ucfirst($this->getNameSpace($contractPath));
 
-        $title = $this->getBaseFileName($name);
-        $titleRepository = $this->title($name) . config("repository-name.repository_suffix");
-        $baseName = $this->getBaseFileName($name) . config("repository-name.repository_suffix");
+        // $title = $this->getBaseFileName($name);
+        // $titleRepository = $this->title($name) . config("repository-name.repository_suffix");
+        // $baseName = $this->getBaseFileName($name) . config("repository-name.repository_suffix");
 
-        $repoPath = config('repository.repository_directory') . '/$name/' . $titleRepository;
-        $filePath = $repoPath . ".php";
+        // $repoPath = config('repository.repository_directory') . '/$name/' . $titleRepository;
+        // $filePath = $repoPath . ".php";
 
-        $repositoryNamespacePath = $filePath;
+        // $repositoryNamespacePath = $filePath;
 
-        $stubProperties = [
-            "{contractName}" => $contract,
-            "{repositoryName}" => $baseName,
-            "{nameSpace}" => config('repository.repository_namespace') . "\\$name",
-            "{model}" => $title,
-            "{modelVariable}" => Str::camel($title),
-            "{contractNamespace}" => $contractNamespace,
-        ];
+        // $stubProperties = [
+        //     "{contractName}" => $contract,
+        //     "{repositoryName}" => $baseName,
+        //     "{nameSpace}" => config('repository.repository_namespace') . "\\$name",
+        //     "{model}" => $title,
+        //     "{modelVariable}" => Str::camel($title),
+        //     "{contractNamespace}" => $contractNamespace,
+        // ];
 
-        if (!File::exists($filePath)) {
-            $fileContent = __DIR__ . "/stub/repository.stub";
+        // if (!File::exists($filePath)) {
+        //     $fileContent = __DIR__ . "/stub/repository.stub";
 
-            new CreateFile(
-                $stubProperties,
-                $repositoryNamespacePath,
-                $fileContent
-            );
+        //     new CreateFile(
+        //         $stubProperties,
+        //         $repositoryNamespacePath,
+        //         $fileContent
+        //     );
 
-            $this->info('Repository Created Successfully.');
-            return true;
-        } else {
-            $this->error('Repository Already Exists.');
-            return false;
-        }
+        //     $this->info('Repository Created Successfully.');
+        //     return true;
+        // } else {
+        //     $this->error('Repository Already Exists.');
+        //     return false;
+        // }
     }
 
     public function title($name)
